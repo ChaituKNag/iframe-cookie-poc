@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <title>Main Page</title>
+</head>
+<body>
+    <button id="btn">load iframe</button>
+    <div id="iframe-div">
+
+    </div>
+    <script>
+        function init() {
+            const iframeDiv = document.querySelector('#iframe-div');
+            const button = document.querySelector('#btn');
+
+            button.addEventListener('click', function () {
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', 'iframe.html');
+                iframeDiv.appendChild(iframe);
+            })
+
+            window.addEventListener('message', function (e) {
+                if(e.data && e.data.type && e.data.type === 'pg-cookie-check') {
+                    console.log('message arrived');
+                    console.log('cookie value is', Cookies.get('my-cookie'));
+                }
+            })
+        }
+
+        window.onload = init;
+        
+    </script>
+</body>
+</html>
