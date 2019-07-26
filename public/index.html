@@ -17,9 +17,11 @@
             const iframeDiv = document.querySelector('#iframe-div');
             const button = document.querySelector('#btn');
 
+            Cookies.remove('my-cookie');
+
             button.addEventListener('click', function () {
                 const iframe = document.createElement('iframe');
-                iframe.setAttribute('src', 'iframe.html');
+                iframe.setAttribute('src', 'https://s.codepen.io/chaituknag/debug/jgMzow/NjrYzqobwROA?url=http://localhost:5001/iframe.html');
                 iframeDiv.appendChild(iframe);
             })
 
