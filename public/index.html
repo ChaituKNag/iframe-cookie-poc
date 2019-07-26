@@ -19,9 +19,13 @@
 
             Cookies.remove('my-cookie');
 
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const redirectUrl = urlParams.get('url') || "http://localhost:5001/iframe.html";
+
             button.addEventListener('click', function () {
                 const iframe = document.createElement('iframe');
-                iframe.setAttribute('src', 'https://s.codepen.io/chaituknag/debug/jgMzow/NjrYzqobwROA?url=http://localhost:5001/iframe.html');
+                iframe.setAttribute('src', 'https://s.codepen.io/chaituknag/debug/jgMzow/NjrYzqobwROA?url=' + redirectUrl);
                 iframeDiv.appendChild(iframe);
             })
 
